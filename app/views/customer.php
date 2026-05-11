@@ -633,7 +633,7 @@ body {
       <div class="su-row">
         <div class="su-av">CR</div>
         <div class="ui">
-          <div style="font-size:13px;font-weight:600;color:var(--text)">CRM Admin</div>
+          <div style="font-size:13px;font-weight:600;color:var(--text)">Admin</div>
           <div style="font-size:11px;color:var(--text3)">Super Admin</div>
         </div>
       </div>
@@ -671,7 +671,7 @@ body {
       <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px">
         <div>
           <h1 class="pg-title"><i data-lucide="users" style="width:21px;height:21px;color:var(--accent)"></i>Customers</h1>
-          <p class="pg-sub" id="pg-sub">All customers · CRM Dashboard</p>
+          <p class="pg-sub" id="pg-sub">All customers · Easy billing Dashboard</p>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button class="btn btn-secondary btn-sm" onclick="exportCSV()"><i data-lucide="download" style="width:13px;height:13px"></i>Export</button>
@@ -888,7 +888,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setBdayBadge();
   if (window.innerWidth >= 900) document.getElementById('tb-add').style.display = 'flex';
   lucide.createIcons();
-  setTimeout(() => toast('Welcome to PulseHub CRM! 👋', 'info'), 2000);
+  setTimeout(() => toast('Welcome to Easy Billing Pro! 👋', 'info'), 2000);
 });
 
 window.addEventListener('resize', () => {

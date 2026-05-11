@@ -968,6 +968,7 @@
             <option value="Beauty">Beauty</option>
             <option value="Toys">Toys</option>
             <option value="Food & Drink">Food & Drink</option>
+               <option value="Food & Drink">Marudhamuna Saram</option>
           </select>
           <div class="form-error" id="e-category">Please select a category</div>
         </div>
@@ -1055,15 +1056,19 @@
         <span class="sidebar-label">Analytics</span>
       </a>
 
-      <a class="nav-link" onclick="showToast('Coming soon!','info')">
+      <a class="nav-link" onclick="window.location.href='/easy_billing_pro/app/views/order.php/'">
         <i data-lucide="shopping-cart"></i>
         <span class="sidebar-label">
           Orders</span>
       </a>
 
-      <a class="nav-link" onclick="showToast('Coming soon!','info')">
+      <a class="nav-link" onclick="window.location.href='/easy_billing_pro/app/views/customer.php/'">
         <i data-lucide="users"></i>
         <span class="sidebar-label">Customers</span>
+      </a>
+       <a class="nav-link" onclick="window.location.href='/easy_billing_pro/app/views/invoice.php/'">
+        <i data-lucide="file-text"></i>
+        <span class="sidebar-label">Invoice</span>
       </a>
 
       <div class="sidebar-section-label">Manage</div>
@@ -1157,7 +1162,7 @@
               <i data-lucide="layout-dashboard" style="width:22px;height:22px;color:#6366f1;"></i>
               Dashboard
             </h1>
-            <p class="page-subtitle" id="dash-subtitle">Welcome back, Alex · Monday, 9 Jun 2025</p>
+            <p class="page-subtitle" id="dash-subtitle">Welcome back, Easy Billing · Monday, 9 Jun 2025</p>
           </div>
           <div style="display:flex;gap:10px;">
             <button class="btn btn-secondary btn-sm" onclick="navigate('analytics',document.querySelector('[data-section=analytics]'))">
