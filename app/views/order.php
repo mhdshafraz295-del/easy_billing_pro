@@ -4,8 +4,6 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>OrderFlow — Orders Management System</title>
-
-<!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- Chart.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -834,10 +832,13 @@ body{
         <i data-lucide="search" class="si" style="width:14px;height:14px"></i>
         <input type="text" id="global-search" placeholder="Search orders…" oninput="onGlobalSearch(this.value)"/>
       </div>
+       
       <div style="display:flex;align-items:center;gap:8px;margin-left:auto">
         <button class="btn btn-primary btn-sm" onclick="openCreateModal()" style="display:none" id="tb-add-btn">
           <i data-lucide="plus" style="width:14px;height:14px"></i>New Order
         </button>
+         <!-- clock -->
+         <div id="clock" class="hidden sm:block text-white text-center bg-black rounded-md w-full  shadow-2xl font-mono p-1">00:00:<span class="cs">00</span><span class="clock-date" id="clock-date"></span></div>
         <button class="ib" onclick="showNotification()">
           <i data-lucide="bell" style="width:17px;height:17px"></i>
           <span class="notif-dot"></span>
@@ -990,6 +991,15 @@ body{
      JAVASCRIPT
 ═══════════════════════════════════════════════════════════ -->
 <script>
+
+      /* ── CLOCK ────────────────────────────── */
+function tick(){
+  const n=new Date(),h=String(n.getHours()).padStart(2,'0'),m=String(n.getMinutes()).padStart(2,'0'),s=String(n.getSeconds()).padStart(2,'0');
+  const el=document.getElementById('clock');
+  if(el)el.innerHTML=`${h}:${m}:<span class="cs">${s}</span><span class="clock-date">${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][n.getDay()]}</span>`;
+}
+tick();setInterval(tick,1000);
+
 /* ═══════════════════════════════════════
    PRODUCT CATALOG
 ═══════════════════════════════════════ */

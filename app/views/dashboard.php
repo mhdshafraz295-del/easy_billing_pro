@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Easy Billing Pro— Admin Dashboard</title>
-
-  <!-- Tailwind CSS -->
+  <title>Easy Billing — Admin Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -968,7 +966,6 @@
             <option value="Beauty">Beauty</option>
             <option value="Toys">Toys</option>
             <option value="Food & Drink">Food & Drink</option>
-               <option value="Food & Drink">Marudhamuna Saram</option>
           </select>
           <div class="form-error" id="e-category">Please select a category</div>
         </div>
@@ -1031,7 +1028,7 @@
         <i data-lucide="layers" style="width:16px;height:16px;color:white;"></i>
       </div>
       <div class="logo-text">
-        <div style="font-size:17px;font-weight:800;color:#f0efeb;letter-spacing:-0.3px;">Easy Billing Pro</div>
+        <div style="font-size:17px;font-weight:800;color:#f0efeb;letter-spacing:-0.3px;">Easy Biling Pro</div>
         <div style="font-size:10px;color:#6b7280;font-weight:500;">Admin v2.0</div>
       </div>
     </div>
@@ -1058,16 +1055,15 @@
 
       <a class="nav-link" onclick="window.location.href='/easy_billing_pro/app/views/order.php/'">
         <i data-lucide="shopping-cart"></i>
-        <span class="sidebar-label">
-          Orders</span>
+        <span class="sidebar-label">Orders</span>
       </a>
 
       <a class="nav-link" onclick="window.location.href='/easy_billing_pro/app/views/customer.php/'">
         <i data-lucide="users"></i>
         <span class="sidebar-label">Customers</span>
       </a>
-       <a class="nav-link" onclick="window.location.href='/easy_billing_pro/app/views/invoice.php/'">
-        <i data-lucide="file-text"></i>
+      <a class="nav-link" onclick="window.location.href='/easy_billing_pro/app/views/invoice.php/'">
+        <i data-lucide="users"></i>
         <span class="sidebar-label">Invoice</span>
       </a>
 
@@ -1078,14 +1074,14 @@
         <span class="sidebar-label">Export CSV</span>
       </a>
 
-      <a class="nav-link" onclick="showToast('Coming soon!','info')">
+      <a class="nav-link" onclick="window.location.href='/easy_billing_pro/app/views/setting.php/'">
         <i data-lucide="settings"></i>
         <span class="sidebar-label">Settings</span>
       </a>
 
-      <a class="nav-link" onclick="showToast('Coming soon!','info')">
+      <a class="nav-link" onclick="window.location.href='/easy_billing_pro/app/views/help_and_support.php/'">
         <i data-lucide="help-circle"></i>
-        <span class="sidebar-label">Help</span>
+        <span class="sidebar-label">Help & Support</span>
       </a>
     </nav>
 
@@ -1105,7 +1101,7 @@
       <div class="user-card">
         <img src="https://api.dicebear.com/8.x/lorelei/svg?seed=prism&backgroundColor=b6e3f4" style="width:34px;height:34px;border-radius:9px;background:#1a1a2e;border:1px solid rgba(255,255,255,0.1);" alt="user"/>
         <div class="sidebar-label" style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:#e5e7eb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Alex Carter</div>
+          <div style="font-size:13px;font-weight:600;color:#e5e7eb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Easy Billing</div>
           <div style="font-size:11px;color:#6b7280;">Super Admin</div>
         </div>
         <i data-lucide="log-out" style="width:15px;height:15px;color:#6b7280;flex-shrink:0;" class="sidebar-label"></i>
@@ -1137,6 +1133,8 @@
           <i data-lucide="plus" style="width:14px;height:14px;"></i>
           <span>Add Product</span>
         </button>
+         <!-- clock -->
+         <div id="clock" class="hidden sm:block text-white text-center bg-black rounded-md w-full  shadow-2xl font-mono p-1">00:00:<span class="cs">00</span><span class="clock-date" id="clock-date"></span></div>
 
         <!-- Notifications -->
         <button class="icon-btn" onclick="showToast('No new notifications','info')">
@@ -1162,7 +1160,7 @@
               <i data-lucide="layout-dashboard" style="width:22px;height:22px;color:#6366f1;"></i>
               Dashboard
             </h1>
-            <p class="page-subtitle" id="dash-subtitle">Welcome back, Easy Billing · Monday, 9 Jun 2025</p>
+            <p class="page-subtitle" id="dash-subtitle">Welcome back, Alex · Monday, 9 Jun 2025</p>
           </div>
           <div style="display:flex;gap:10px;">
             <button class="btn btn-secondary btn-sm" onclick="navigate('analytics',document.querySelector('[data-section=analytics]'))">
@@ -1392,6 +1390,14 @@
      JAVASCRIPT
 ============================================= -->
 <script>
+  
+      /* ── CLOCK ────────────────────────────── */
+function tick(){
+  const n=new Date(),h=String(n.getHours()).padStart(2,'0'),m=String(n.getMinutes()).padStart(2,'0'),s=String(n.getSeconds()).padStart(2,'0');
+  const el=document.getElementById('clock');
+  if(el)el.innerHTML=`${h}:${m}:<span class="cs">${s}</span><span class="clock-date">${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][n.getDay()]}</span>`;
+}
+tick();setInterval(tick,1000);  
 /* =============================================
    SEED / DEFAULT PRODUCTS
 ============================================= */

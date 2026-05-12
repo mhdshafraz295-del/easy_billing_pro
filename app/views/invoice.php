@@ -4,8 +4,6 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Easy Billing Pro — Invoice Management</title>
-
-<!-- CDN Dependencies -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -532,6 +530,8 @@ body{font-family:'Figtree',sans-serif;background:var(--bg);color:var(--txt);min-
         <button class="btn btn-primary btn-sm no-print" id="tb-new-btn" onclick="openCreateInv()" style="display:none">
           <i class="fas fa-plus"></i>New Invoice
         </button>
+        <!-- clock -->
+         <div id="clock" class="hidden sm:block text-white text-center bg-black rounded-md w-full  shadow-2xl font-mono p-1">00:00:<span class="cs">00</span><span class="clock-date" id="clock-date"></span></div>
         <button class="ib" onclick="toast('2 invoices overdue today!','warn')">
           <i class="fas fa-bell" style="font-size:16px"></i>
           <span class="nd"></span>
@@ -798,6 +798,13 @@ body{font-family:'Figtree',sans-serif;background:var(--bg);color:var(--txt);min-
      JAVASCRIPT
 ═══════════════════════════════════════════════════════ -->
 <script>
+        /* ── CLOCK ────────────────────────────── */
+function tick(){
+  const n=new Date(),h=String(n.getHours()).padStart(2,'0'),m=String(n.getMinutes()).padStart(2,'0'),s=String(n.getSeconds()).padStart(2,'0');
+  const el=document.getElementById('clock');
+  if(el)el.innerHTML=`${h}:${m}:<span class="cs">${s}</span><span class="clock-date">${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][n.getDay()]}</span>`;
+}
+tick();setInterval(tick,1000);
 /* ════════════════════════════════════════════════════
    EASY BILLING PRO — COMPLETE JAVASCRIPT
 ════════════════════════════════════════════════════ */

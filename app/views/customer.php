@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>PulseHub CRM — Customer Management</title>
+<title>Easy Billing EBP — Customer Management</title>
 
-<!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- Chart.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -27,10 +26,10 @@
 ══════════════════════════════════════════ */
 :root {
   /* Light — warm cream + deep teal */
-  --bg:        #f7f5f0;
-  --surface:   #ffffff;
+    --bg:       #e8e3d9;
+  --surface:    #FFFFFF;
   --surface2:  #f0ede6;
-  --surface3:  #e8e3d9;
+  --surface3:  #e8e4dd;
   --border:    #e0dbd0;
   --border2:   #ccc7bb;
   --text:      #1c1a16;
@@ -60,7 +59,7 @@
 }
 [data-theme="dark"] {
   --bg:        #111009;
-  --surface:   #1a1816;
+  --surface:   #1c1a16;
   --surface2:  #221f1c;
   --surface3:  #2a2723;
   --border:    #2e2b26;
@@ -652,6 +651,8 @@ body {
         <button class="btn btn-primary btn-sm" id="tb-add" onclick="openAdd()" style="display:none">
           <i data-lucide="plus" style="width:13px;height:13px"></i>Add Customer
         </button>
+        <!-- clock -->
+         <div id="clock" class="hidden sm:block text-white text-center bg-black rounded-md w-full  shadow-2xl font-mono p-1">00:00:<span class="cs">00</span><span class="clock-date" id="clock-date"></span></div>
         <button class="ib" onclick="toast('3 birthdays this week! 🎂','warn')">
           <i data-lucide="cake" style="width:17px;height:17px"></i>
           <span class="nd"></span>
@@ -665,8 +666,6 @@ body {
 
     <!-- ═══ PAGE: CUSTOMERS ═══ -->
     <div id="page-customers" class="page act">
-      <!-- Birthday banner -->
-      <div id="bday-banner" style="display:none"></div>
 
       <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px">
         <div>
@@ -824,6 +823,14 @@ body {
 </div><!-- /app -->
 
 <script>
+
+        /* ── CLOCK ────────────────────────────── */
+function tick(){
+  const n=new Date(),h=String(n.getHours()).padStart(2,'0'),m=String(n.getMinutes()).padStart(2,'0'),s=String(n.getSeconds()).padStart(2,'0');
+  const el=document.getElementById('clock');
+  if(el)el.innerHTML=`${h}:${m}:<span class="cs">${s}</span><span class="clock-date">${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][n.getDay()]}</span>`;
+}
+tick();setInterval(tick,1000);
 /* ════════════════════════════════════
    AVATAR COLORS
 ════════════════════════════════════ */
